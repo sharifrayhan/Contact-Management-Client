@@ -9,19 +9,19 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Rootpage></Rootpage>,
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
-        element: <Home/>,
+        element: <Home />,
       },
       {
         path: "/AddContacts",
-        element: <AddContacts/>,
+        element: <AddContacts />,
       },
       {
         path: "/AllContacts",
-        element: <AllContacts/>,
+        element: <AllContacts />,
       },
     ],
   },

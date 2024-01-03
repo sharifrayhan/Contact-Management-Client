@@ -1,19 +1,23 @@
-import { useQuery } from '@tanstack/react-query';
-import useAxiosSecure from '../axios/useAxiosSecure';
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../axios/useAxiosSecure";
 import Swal from "sweetalert2";
-import { bg_three } from '../assets';
 
 const useContacts = () => {
-    const axiosSecure = useAxiosSecure()
-  const { data: allContacts, isLoading, error, refetch } = useQuery({
+  const axiosSecure = useAxiosSecure();
+  const {
+    data: allContacts,
+    isLoading,
+    error,
+    refetch,
+  } = useQuery({
     queryFn: async () => {
-      const response = await axiosSecure.get('/contacts');
+      const response = await axiosSecure.get("/contacts");
       return response.data;
     },
-    queryKey: ['contacts'],
+    queryKey: ["contacts"],
   });
 
-  console.log(allContacts)
+  //   Handle Deleting Contact
 
   const handleDelete = async (ContactId) => {
     try {
@@ -35,9 +39,9 @@ const useContacts = () => {
     }
   };
 
+  //   Handle Updating Contact 
 
   const handleUpdate = (contact) => {
-   
     Swal.fire({
       title: "Edit Contact",
       html: `
@@ -64,10 +68,8 @@ const useContacts = () => {
         </div>
       `,
       confirmButtonText: "Update",
+      background: "#E1F9FF",
       showCloseButton: true,
-      customClass: {
-        background: "#C3E1DF"
-      },
       focusConfirm: false,
       preConfirm: async () => {
         const updatedContact = {
@@ -101,24 +103,40 @@ const useContacts = () => {
     });
   };
 
-  const handleAddToFavorites = async (contact) => {
-    console.log(contact);
+  //   Handle Adding To Favourites List
+
+  const handleAddToFavorites = async (data) => {
+    const { Name, Email, Phone, Address, Picture } = data;
 
     try {
-        const url = '/favourites';
-        const response = await axiosSecure.post(url, contact);
-        if (response.status === 201) {
-          Swal.fire('Success!', 'Added to favourites!', 'success');
-        } else {
-          Swal.fire('Error', 'Failed to add', 'error');
-        }
-      } catch (error) {
-        console.error("Error adding favourites:", error);
-        Swal.fire('Error', 'Failed to add', 'error');
+      const url = "/favourites";
+      const response = await axiosSecure.post(url, {
+        Name,
+        Email,
+        Phone,
+        Address,
+        Picture,
+      });
+      if (response.status === 201) {
+        Swal.fire("Success!", "Added to favourites!", "success");
+      } else {
+        Swal.fire("Error", "Failed to add", "error");
       }
+    } catch (error) {
+      console.error("Error adding favourites:", error);
+      Swal.fire("Error", "Failed to add", "error");
+    }
   };
 
-  return { allContacts, isLoading, error,handleDelete,handleUpdate,handleAddToFavorites, refetch };
+  return {
+    allContacts,
+    isLoading,
+    error,
+    handleDelete,
+    handleUpdate,
+    handleAddToFavorites,
+    refetch,
+  };
 };
 
 export default useContacts;

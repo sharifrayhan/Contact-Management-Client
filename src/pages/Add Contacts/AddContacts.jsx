@@ -7,31 +7,28 @@ import useAxiosSecure from "../../axios/useAxiosSecure";
 
 const AddContact = () => {
   const { register, handleSubmit } = useForm();
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
 
   const bgStyle = {
     backgroundImage: `url(${bg_three})`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-};
-  
-  
-  const onSubmit = async (data) => {
-    console.log(data);
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+  };
 
+  const onSubmit = async (data) => {
     try {
-        const url = '/contacts';
-        const response = await axiosSecure.post(url, data);
-        if (response.status === 201) {
-          Swal.fire('Success!', 'Contact added successfully!', 'success');
-        } else {
-          Swal.fire('Error', 'Failed to add contact', 'error');
-        }
-      } catch (error) {
-        console.error("Error adding task:", error);
-        Swal.fire('Error', 'Failed to add task', 'error');
+      const url = "/contacts";
+      const response = await axiosSecure.post(url, data);
+      if (response.status === 201) {
+        Swal.fire("Success!", "Contact added successfully!", "success");
+      } else {
+        Swal.fire("Error", "Failed to add contact", "error");
       }
+    } catch (error) {
+      console.error("Error adding task:", error);
+      Swal.fire("Error", "Failed to add task", "error");
+    }
   };
 
   return (

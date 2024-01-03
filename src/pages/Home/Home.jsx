@@ -3,19 +3,19 @@ import { cover_two } from "../../assets/index";
 import Navbar from "./Components/Navbar";
 
 const Home = () => {
-    const bgStyle = {
-        backgroundImage: `url(${cover_two})`,
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-    };
+  const bgStyle = {
+    backgroundImage: `url(${cover_two})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+  };
 
-    return (
-        <div style={bgStyle}>
-            <Navbar/>
-            <Banner />
-        </div>
-    );
+  return (
+    <div style={bgStyle}>
+      <Navbar />
+      <Banner />
+    </div>
+  );
 };
 
 export default Home;
