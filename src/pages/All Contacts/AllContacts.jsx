@@ -20,14 +20,14 @@ const AllContacts = () => {
         {allContacts?.map((contact) => (
           <div
             key={contact?._id}
-            className="relative bg-[#C3E1DF]  max-w-[300px] h-[190px] p-4 rounded-md shadow-md transition-transform transform "
+            className="relative bg-[#C3E1DF] hover:scale-105  max-w-[360px] h-[210px] max-h-[250px] p-4 rounded-md shadow-md transition-transform transform "
           >
-            <div className="flex p-5 items-center gap-4 md:gap-6 justify-center">
+            <div className="flex p-5 h-170px[] items-center gap-4 md:gap-6 justify-center">
               <div className=" w-1/2 flex flex-col justify-between text-slate-600">
                 <p className=" text-sm">{contact?.Email}</p>
-                <h1 className=" font-bold text-2xl">{contact?.Name}</h1>
-                <p className=" text-sm">{contact?.Address}</p>
-                <p className=" text-sm">{contact?.Phone}</p>
+                <h1 className=" font-bold text-2xl line-clamp-2">{contact?.Name}</h1>
+                <p className=" text-sm line-clamp-2">{contact?.Address}</p>
+                <p className=" text-sm">Phone: {contact?.Phone}</p>
               </div>
 
               <div className="avatar w-1/2">
