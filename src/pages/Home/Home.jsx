@@ -1,10 +1,10 @@
 import Banner from "./Components/Banner";
-import { cover } from "../../assets/index";
+import { cover_two } from "../../assets/index";
 import Navbar from "./Components/Navbar";
 
 const Home = () => {
     const bgStyle = {
-        backgroundImage: `url(${cover})`,
+        backgroundImage: `url(${cover_two})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
