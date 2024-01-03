@@ -1,5 +1,6 @@
 import Banner from "./Components/Banner";
 import { cover } from "../../assets/index";
+import Navbar from "./Components/Navbar";
 
 const Home = () => {
     const bgStyle = {
@@ -11,6 +12,7 @@ const Home = () => {
 
     return (
         <div style={bgStyle}>
+            <Navbar/>
             <Banner />
         </div>
     );
